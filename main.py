@@ -7,7 +7,13 @@ BACKGROUND_COLOR = '#E78895'
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
+def save_password():
+    with open('passwords.txt', mode='a') as file:
+        file.writelines(f'{web_input.get()} | {user_input.get()} | {pass_input.get()}\n')
+        
+    web_input.delete(0,'end')
+    pass_input.delete(0,'end') 
+    
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk(screenName='Password Manager')
 window.title('Password manager')
@@ -40,7 +46,7 @@ pass_input.grid(column=1, row=3)
 pass_generate_bt = Button(text='Generate Password', bg='white')
 pass_generate_bt.grid(column=2, row=3)
 
-add_bt = Button(text='Add', bg='white', width=33)
+add_bt = Button(text='Add', bg='white', width=33, command=save_password)
 add_bt.grid(column=1, row=4, columnspan=2)
 
 
