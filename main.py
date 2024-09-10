@@ -3,8 +3,9 @@ from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
 
-RED = '#d4483b'
-BACKGROUND_COLOR = '#E78895'
+RED = '#F1EF99'
+BACKGROUND_COLOR = '#FFE8C5'
+BUTTON_COLOR = '#FFA27F'
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 #Password Generator Project
@@ -56,7 +57,7 @@ canvas.grid(column=0, row=0, columnspan=3)
 #Labels and inputs
 web_label = Label(text='Website:', bg=BACKGROUND_COLOR)
 web_label.grid(column=0, row=1)
-web_input = Entry(width=40, bg=BACKGROUND_COLOR)
+web_input = Entry(width=40, bg=RED)
 web_input.grid(column=1, row=1, columnspan=2)
 
 web_input.focus()
@@ -72,10 +73,10 @@ pass_label = Label(text='Password:', bg=BACKGROUND_COLOR)
 pass_label.grid(column=0, row=3)
 pass_input = Entry(width=21, bg=RED,)
 pass_input.grid(column=1, row=3)
-pass_generate_bt = Button(text='Generate Password', bg='white', command=generate_password)
+pass_generate_bt = Button(text='Generate Password', bg=BUTTON_COLOR, command=generate_password)
 pass_generate_bt.grid(column=2, row=3)
 
-add_bt = Button(text='Add', bg='white', width=33, command=save_password)
+add_bt = Button(text='Add', bg=BUTTON_COLOR, width=33, command=save_password)
 add_bt.grid(column=1, row=4, columnspan=2)
 
 
