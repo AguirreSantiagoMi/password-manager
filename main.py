@@ -1,5 +1,5 @@
 from tkinter import *
-import pandas
+from tkinter import messagebox
 
 RED = '#d4483b'
 BACKGROUND_COLOR = '#E78895'
@@ -8,11 +8,21 @@ BACKGROUND_COLOR = '#E78895'
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
-    with open('passwords.txt', mode='a') as file:
-        file.writelines(f'{web_input.get()} | {user_input.get()} | {pass_input.get()}\n')
+    website = web_input.get()
+    user = user_input.get()
+    password = pass_input.get()
+    
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showwarning(title='Error', message="Please don't leave any fields empty!")
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f'These are de data entered: \nEmail: {user} \nPassword: {password}')
         
-    web_input.delete(0,'end')
-    pass_input.delete(0,'end') 
+        if is_ok:
+            with open('passwords.txt', mode='a') as file:
+                file.writelines(f'{website} | {user} | {password}\n')
+            
+            web_input.delete(0,'end')
+            pass_input.delete(0,'end') 
     
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk(screenName='Password Manager')
